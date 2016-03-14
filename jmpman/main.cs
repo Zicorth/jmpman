@@ -36,8 +36,11 @@ namespace arookas {
 			if (args.Length > 2) {
 				outpath = args[2];
 			}
+			message("loading {0}...\n", informat);
 			var jmp = loadJmp(inpath, informat);
+			message("outputting {1}...\n", outformat);
 			convertJmp(jmp, outpath, outformat);
+			message("done\n");
 			return 0;
 		}
 
