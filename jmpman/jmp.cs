@@ -344,11 +344,11 @@ namespace arookas {
 			if (element == null) {
 				return 0.0f;
 			}
-			var match = Regex.Match(element.Value, @"^\s*-?\d+\.\d+\s*$");
+			var match = Regex.Match(element.Value, @"^\s*-?\d+(\.\d+\s*)?$");
 			if (!match.Success) {
 				return 0.0f;
 			}
-			return Single.Parse(element.Value);
+			return Single.Parse(element.Value, CultureInfo.InvariantCulture);
 		}
 		static string readStringField(xElement element) {
 			if (element == null) {
@@ -485,7 +485,7 @@ namespace arookas {
 					return mIntValue.ToString();
 				}
 				case jmpValueType.FLOAT: {
-					return mFloatValue.ToString();
+					return mFloatValue.ToString(CultureInfo.InvariantCulture);
 				}
 				case jmpValueType.STRING: {
 					if (mStringValue == null) {
